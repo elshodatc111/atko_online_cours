@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OnlineController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CoursController;
+use App\Http\Controllers\OrderController;
 /* Start Admin */
 
 Auth::routes();
@@ -55,3 +56,6 @@ Route::get('/lessin_show/{id}', [CoursController::class, 'lessin_show'])->name('
 Route::get('/my_cours', [CoursController::class, 'my_cours'])->name('my_cours');
 Route::get('/my_cours_show/{id}', [CoursController::class, 'my_cours_show'])->name('my_cours_show');
 Route::get('/my_cours_show_item/{cours_id}/{item_id}', [CoursController::class, 'my_cours_show_item'])->name('my_cours_show_item');
+
+
+Route::get('/paymart/{id}', [OrderController::class, 'paymart'])->name('paymart');

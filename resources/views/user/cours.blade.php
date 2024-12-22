@@ -34,7 +34,7 @@
               <div class="course-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                   <p class="category">Kurs narxi: </p>
-                  <p class="price">@if($item->lessin_price==0) Bepul @else $item->lessin_price so'm @endif</p>
+                  <p class="price">@if($item->lessin_price==0) Bepul @else {{$item->lessin_price}} so'm @endif</p>
                 </div>
                 <h3 class="w-100 text-center"><a href="{{ route('user_cours_show', $item['id'] ) }}">{{ $item->cours_name }}</a></h3>
                 <p class="description">{{ $item->cours_description }}</p>

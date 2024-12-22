@@ -75,7 +75,7 @@
           @if($Cours['lessin_price']=='0')
             <a href="{{ route('lessin_show', $Cours['id']) }}" class="p-3 text-white" style="background-color: red;border-radius: 20px;">Kurslarimga saqlash</a>
           @else
-            <a href="#" class="p-3 text-white" style="background-color: red;border-radius: 20px;">Kursni sotib olish</a>
+            <a href="{{ route('paymart',$Cours['id']) }}" class="p-3 text-white" style="background-color: red;border-radius: 20px;">Kursni sotib olish</a>
           @endif
         </div>
       </div>

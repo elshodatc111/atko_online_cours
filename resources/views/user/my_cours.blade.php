@@ -15,7 +15,7 @@
       <nav class="breadcrumbs">
         <div class="container">
           <ol>
-            <li><a href="index.html">Bosh sahifa</a></li>
+            <li><a href="{{ route('user_home') }}">Bosh sahifa</a></li>
             <li class="current">Mening Kurslarim</li>
           </ol>
         </div>
@@ -38,7 +38,9 @@
             </div>
           </div> 
           @empty
-
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch my-5 py-5" data-aos="zoom-in" data-aos-delay="100">
+              <h6 class="w-100 text-center my-5 py-5">Sizda aktiv kurslar mavjud emas</h6>
+          </div>
           @endforelse
 
         </div>

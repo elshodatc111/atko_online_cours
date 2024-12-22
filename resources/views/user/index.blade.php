@@ -72,42 +72,26 @@
       </div>
       <div class="container">
         <div class="row">
+          @foreach($randomCours as $item)
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
             <div class="course-item">
-              <img src="assets/img/course-1.jpg" class="img-fluid" alt="...">
+              <img src="image/banner/{{ $item['cours_image'] }}" class="img-fluid" alt="...">
               <div class="course-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                   <p class="category">Kurs narxi</p>
-                  <p class="price">124 000 so'm</p>
+                  <p class="price">
+                    @if($item['lessin_price']=='0')
+                      Bepul
+                    @else 
+                      {{$item['lessin_price']}} so'm
+                    @endif
+                  </p>
                 </div>
-                <h3 class="w-100 text-center"><a href="course-details.html">Website Design</a></h3>
+                <h3 class="w-100 text-center"><a href="{{ route('user_cours_show',$item['id']) }}">{{$item['cours_name']}}</a></h3>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-            <div class="course-item">
-              <img src="assets/img/course-1.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <p class="category">Kurs narxi</p>
-                  <p class="price">124 000 so'm</p>
-                </div>
-                <h3 class="w-100 text-center"><a href="course-details.html">Website Design</a></h3>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-            <div class="course-item">
-              <img src="assets/img/course-1.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <p class="category">Kurs narxi</p>
-                  <p class="price">124 000 so'm</p>
-                </div>
-                <h3 class="w-100 text-center"><a href="course-details.html">Website Design</a></h3>
-              </div>
-            </div>
-          </div>
+          @endforeach
           
         </div>
       </div>

@@ -13,7 +13,8 @@ class OnlineController extends Controller
 {
     public function index(){
         $Contact = Contact::first();
-        return view('user.index',compact('Contact'));
+        $randomCours = Cours::inRandomOrder()->take(3)->get();
+        return view('user.index',compact('Contact','randomCours'));
     }
     public function techer(){
         $Techer = Techer::get();

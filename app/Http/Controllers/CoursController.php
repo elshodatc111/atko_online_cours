@@ -31,7 +31,6 @@ class CoursController extends Controller{
     }
     public function my_cours(){
         $UserCours = UserCours::where('user_cours.user_id',auth()->user()->id)->where('user_cours.end','>=',date('Y-m-d'))->join('cours','cours.id','=','user_cours.cours_id')->get();
-        //dd($UserCours);
         return view('user.my_cours',compact('UserCours'));
     }
     public function my_cours_show($id){
