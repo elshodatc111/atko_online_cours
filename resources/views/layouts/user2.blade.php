@@ -37,7 +37,7 @@
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
       @guest
-        <a class="btn-getstarted" href="login.html">KIRISH</a>
+        <a class="btn-getstarted" href="{{ route('user_login') }}">KIRISH</a>
       @else
         <a class="btn-getstarted" href="my_cours.html">KURSLARIM</a>
       @endguest

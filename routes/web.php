@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OnlineController;
+use App\Http\Controllers\UserController;
 /* Start Admin */
 
 Auth::routes();
@@ -29,7 +30,6 @@ Route::put('/admin/contact/update/{id}', [HomeController::class, 'contact_update
 
 /* Start End */
 
-/* Start User */
 Route::get('/', [OnlineController::class, 'index'])->name('user_home');
 Route::get('/home', [OnlineController::class, 'index'])->name('user_home');
 Route::get('/techer', [OnlineController::class, 'techer'])->name('user_techer');
@@ -37,3 +37,12 @@ Route::get('/contact', [OnlineController::class, 'contact'])->name('user_contact
 Route::post('/contact_add', [OnlineController::class, 'message_add'])->name('user_contact_add');
 Route::get('/cours', [OnlineController::class, 'cours'])->name('user_cours');
 Route::get('/cours_show/{id}', [OnlineController::class, 'user_cours_show'])->name('user_cours_show');
+
+
+Route::get('/kirish', [UserController::class, 'login'])->name('user_login');
+Route::post('/kirish', [UserController::class, 'login_post'])->name('login_post');
+
+Route::get('/registr', [UserController::class, 'registr'])->name('user_registr');
+Route::post('/registr/post', [UserController::class, 'register_post'])->name('register_post');
+
+Route::get('/confirm', [UserController::class, 'confirm_email'])->name('confirm_email');
