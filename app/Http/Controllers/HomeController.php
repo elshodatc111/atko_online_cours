@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Techer;
 use App\Models\Cours;
 use App\Models\Contact;
+use App\Models\CoursItem;
 use App\Models\ContactMessaga;
 use Illuminate\Support\Str;
 
@@ -59,6 +60,40 @@ class HomeController extends Controller{
         $Cours = Cours::get();
         return view('admin.cours',compact('Techer','Cours'));
     }
+    public function cours_show($id){
+        $Cours = Cours::find($id);
+        $CoursItem = CoursItem::where('cours_id',$id)->get();
+        return view('admin.cours_show',compact('Cours','CoursItem'));
+    }
+    public function cours_image_update(Request $request, $id){
+        $validated = $request->validate([
+            'cours_image' => 'required|image|mimes:jpg,png|max:2048',
+        ]);
+        if ($request->hasFile('cours_image')) {
+            $imageName = Str::random(20) . '.' . $request->file('cours_image')->getClientOriginalExtension();
+            $imagePath = $imageName;
+            $request->file('cours_image')->move(public_path('image/banner'), $imageName);
+        }
+        $Cours = Cours::find($id);
+        $Cours->cours_image = $imagePath;
+        $Cours->save();
+        return redirect()->back()->with('status', 'Kurs rasmi muvaffaqiyatli yangilandi!');
+    }
+    public function cours_update_all(Request $request, $id){
+        $validated = $request->validate([
+            'cours_name' => 'required|string|max:255',
+            'lessin_time' => 'required',
+            'techer_name' => 'required|string|max:255',
+            'cours_description' => 'required|string',
+            'lessin_daraja' => 'required|string|max:50',
+            'lessin_price' => 'required|numeric',
+            'lessin_davomiyligi' => 'required|integer',
+        ]);
+        $course = Cours::findOrFail($id);
+        $course->update($validated);
+        return redirect()->back()->with('status', 'Kurs ma\'lumotlari muvaffaqiyatli yangilandi!');
+    }
+
     public function cours_story(Request $request){
         $validated = $request->validate([
             'cours_name' => 'required|string|max:255',
@@ -86,6 +121,17 @@ class HomeController extends Controller{
         $course->cours_description = $validated['cours_description'];
         $course->save();
         return redirect()->back()->with('status', 'Kurs muvaffaqiyatli saqlandi!');
+    }
+    public function cours_item_story(Request $request){
+        $validated = $request->validate([
+            'cours_id' => 'required|exists:cours,id',
+            'item_name' => 'required|string|max:255',
+            'video_url' => 'nullable|string|max:255',
+            'audio_url' => 'nullable|string|max:255',
+            'item_discription' => 'required|string',
+        ]);
+        CoursItem::create($validated);
+        return redirect()->back()->with('status', 'Yangi mavzu muvaffaqiyatli saqlandi!');
     }
     public function contact(){
         $Contact = Contact::first();

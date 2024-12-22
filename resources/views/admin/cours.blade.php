@@ -41,7 +41,7 @@
                                 <td>{{ $item['lessin_price'] }}</td>
                                 <td>{{ $item['lessin_davomiyligi'] }}</td>
                                 <td>
-                                    <a href="#" class="btn btn-success"><i class="bi bi-eye"></i></a>
+                                    <a href="{{ route('admin_cours_show', $item['id']) }}" class="btn btn-success"><i class="bi bi-eye"></i></a>
                                 </td>
                             </tr>
                             @empty

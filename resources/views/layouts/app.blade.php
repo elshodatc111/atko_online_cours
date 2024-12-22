@@ -28,9 +28,6 @@
                         
                         @else
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">Home</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin_techer') }}">Techer</a>
                         </li>
                         <li class="nav-item">
@@ -44,12 +41,6 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Users Cours</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">File</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Setting</a>
                         </li>
                         @endguest
                     </ul>

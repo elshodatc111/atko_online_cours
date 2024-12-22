@@ -71,16 +71,15 @@
                                 <th>Ismi</th>
                                 <th>Telefon raqam</th>
                                 <th>Murojat matni</th>
-                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($ContactMessaga as $item)
                                 <tr>
-                                    <td>ss</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $loop->index+1 }}</td>
+                                    <td>{{ $item['name'] }}</td>
+                                    <td>{{ $item['phone'] }}</td>
+                                    <td>{{ $item['discriotion'] }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
