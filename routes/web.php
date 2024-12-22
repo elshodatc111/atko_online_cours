@@ -33,6 +33,7 @@ Route::put('/admin/contact/update/{id}', [HomeController::class, 'contact_update
 Route::get('/', [OnlineController::class, 'index'])->name('user_home');
 Route::get('/home', [OnlineController::class, 'index'])->name('user_home');
 Route::get('/techer', [OnlineController::class, 'techer'])->name('user_techer');
-Route::get('/cours', [OnlineController::class, 'cours'])->name('user_cours');
 Route::get('/contact', [OnlineController::class, 'contact'])->name('user_contact');
 Route::post('/contact_add', [OnlineController::class, 'message_add'])->name('user_contact_add');
+Route::get('/cours', [OnlineController::class, 'cours'])->name('user_cours');
+Route::get('/cours_show/{id}', [OnlineController::class, 'user_cours_show'])->name('user_cours_show');

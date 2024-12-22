@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Techer;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\CoursItem;
 use App\Models\Cours;
 use App\Models\Contact;
 use App\Models\ContactMessaga;
@@ -38,5 +39,11 @@ class OnlineController extends Controller
             'discriotion' => $validated['discriotion'],
         ]);
         return redirect()->back()->with('success', 'Xabaringiz muvaffaqiyatli yuborildi!');
+    }
+    public function user_cours_show($id){
+        $Cours = Cours::find($id);
+        $CoursItem = CoursItem::where('cours_id',$id)->get();
+        $Count = count($CoursItem);
+        return view('user.cours_item',compact('Cours','CoursItem','Count'));
     }
 }
