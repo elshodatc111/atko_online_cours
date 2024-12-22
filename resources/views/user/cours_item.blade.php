@@ -72,8 +72,11 @@
           <p>{{ $Cours['lessin_davomiyligi'] }} kun</p>
         </div>
         <div class="text-center py-3">
-          <a href="#" class="p-3 text-white" style="background-color: red;border-radius: 20px;">Darslarni boshlash</a>
-          <a href="#" class="p-3 text-white" style="background-color: red;border-radius: 20px;">Kursni sotib olish</a>
+          @if($Cours['lessin_price']=='0')
+            <a href="{{ route('lessin_show', $Cours['id']) }}" class="p-3 text-white" style="background-color: red;border-radius: 20px;">Kurslarimga saqlash</a>
+          @else
+            <a href="#" class="p-3 text-white" style="background-color: red;border-radius: 20px;">Kursni sotib olish</a>
+          @endif
         </div>
       </div>
     </div>

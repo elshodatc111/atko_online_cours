@@ -39,7 +39,7 @@
       @guest
         <a class="btn-getstarted" href="{{ route('user_login') }}">KIRISH</a>
       @else
-        <a class="btn-getstarted" href="my_cours.html">KURSLARIM</a>
+        <a class="btn-getstarted" href="{{ route('my_cours') }}">KURSLARIM</a>
       @endguest
     </div>
   </header>

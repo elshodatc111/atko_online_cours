@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OnlineController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CoursController;
 /* Start Admin */
 
 Auth::routes();
@@ -38,7 +39,6 @@ Route::post('/contact_add', [OnlineController::class, 'message_add'])->name('use
 Route::get('/cours', [OnlineController::class, 'cours'])->name('user_cours');
 Route::get('/cours_show/{id}', [OnlineController::class, 'user_cours_show'])->name('user_cours_show');
 
-
 Route::get('/kirish', [UserController::class, 'login'])->name('user_login');
 Route::post('/kirish', [UserController::class, 'login_post'])->name('login_post');
 
@@ -46,3 +46,12 @@ Route::get('/registr', [UserController::class, 'registr'])->name('user_registr')
 Route::post('/registr/post', [UserController::class, 'register_post'])->name('register_post');
 
 Route::get('/confirm', [UserController::class, 'confirm_email'])->name('confirm_email');
+
+
+
+/* Cours  CoursController  */
+Route::get('/lessin_show/{id}', [CoursController::class, 'lessin_show'])->name('lessin_show');
+
+Route::get('/my_cours', [CoursController::class, 'my_cours'])->name('my_cours');
+Route::get('/my_cours_show/{id}', [CoursController::class, 'my_cours_show'])->name('my_cours_show');
+Route::get('/my_cours_show_item/{cours_id}/{item_id}', [CoursController::class, 'my_cours_show_item'])->name('my_cours_show_item');
