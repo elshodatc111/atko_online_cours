@@ -7,6 +7,7 @@ use App\Http\Controllers\OnlineController;
 
 Auth::routes();
 Route::get('/admin/home', [HomeController::class, 'index'])->name('home');
+Route::get('/admin/users', [HomeController::class, 'users'])->name('admin_users');
 Route::get('/admin/techer', [HomeController::class, 'techer'])->name('admin_techer');
 Route::post('/admin/techer/story', [HomeController::class, 'techer_story'])->name('admin_techer_story');
 Route::put('/admin/techer/update/{id}', [HomeController::class, 'techer_update'])->name('admin_techer_update');
@@ -16,6 +17,9 @@ Route::post('/admin/cours/story', [HomeController::class, 'cours_story'])->name(
 Route::put('/admin/cours/update/image/{id}', [HomeController::class, 'cours_image_update'])->name('admin_image_update');
 Route::put('/admin/cours/update/all/{id}', [HomeController::class, 'cours_update_all'])->name('admin_all_update');
 Route::post('/admin/cours/item/story', [HomeController::class, 'cours_item_story'])->name('admin_cours_item_story');
+Route::delete('/admin/cours/item/delete/{id}', [HomeController::class, 'cours_item_delete'])->name('admin_cours_item_delete');
+Route::get('/admin/cours/item/show/{id}', [HomeController::class, 'cours_item_show'])->name('admin_cours_item_show');
+Route::put('/admin/cours/item/show/story', [HomeController::class, 'cours_item_update'])->name('admin_cours_item_show_update');
 
 Route::get('/admin/contact', [HomeController::class, 'contact'])->name('admin_contact');
 Route::post('/admin/contact/create', [HomeController::class, 'contact_create'])->name('admin_contact_create');

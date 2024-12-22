@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Techer;
+use App\Models\User;
 use App\Models\Cours;
 use App\Models\Contact;
 use App\Models\CoursItem;
@@ -172,6 +173,37 @@ class HomeController extends Controller{
         $Contact->video = $request->video;
         $Contact->save();
         return redirect()->back()->with('status', 'Contact muvaffaqiyatli yangilandi!');
+    }
+    public function cours_item_delete($id){
+        $CoursItem = CoursItem::find($id);
+        $CoursItem->delete();
+        return redirect()->back()->with('status', 'Kurs mavzusi muvaffaqiyatli o\'chirildi!');
+    }
+    public function cours_item_show($id){
+        $CoursItem = CoursItem::find($id);
+        $Cours = Cours::find($CoursItem->cours_id);
+        return view('admin.cours_item_show',compact('Cours','CoursItem'));
+    }
+    public function cours_item_update(Request $request){
+        $request->validate([
+            'mavzu_id' => 'required|exists:cours_items,id',
+            'item_name' => 'required|string|max:255',
+            'video_url' => 'required|string|max:255',
+            'audio_url' => 'nullable|string|max:255',
+            'item_discription' => 'required|string',
+        ]);
+        $coursItem = CoursItem::findOrFail($request->mavzu_id);
+        $coursItem->update([
+            'item_name' => $request->item_name,
+            'video_url' => $request->video_url,
+            'audio_url' => $request->audio_url ?? null,
+            'item_discription' => $request->item_discription,
+        ]);
+        return redirect()->back()->with('status', 'Ma\'lumotlar muvaffaqiyatli yangilandi!');
+    }
+    public function users(){
+        $Users = User::get();
+        return view('admin.users',compact('Users'));
     }
 
 

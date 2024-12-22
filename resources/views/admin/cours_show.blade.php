@@ -96,7 +96,12 @@
                                 <td>{{ $item['video_url'] }}</td>
                                 <td>{{ $item['audio_url'] }}</td>
                                 <td>
-                                    <a href="#" class="btn btn-primary"><i class="bi bi-eye"></i></a>
+                                    <a href="{{ route('admin_cours_item_show', $item['id']) }}" class="btn btn-primary"><i class="bi bi-eye"></i></a>
+                                    <form action="{{ route('admin_cours_item_delete',$item['id']) }}" method="post" style="display:inline">
+                                        @csrf 
+                                        @method('delete')
+                                        <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                    </form>
                                 </td>
                             </tr>
                             @empty

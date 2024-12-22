@@ -37,7 +37,7 @@
                             <a class="nav-link" href="{{ route('admin_contact') }}">Conatct</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Users</a>
+                            <a class="nav-link" href="{{ route('admin_users') }}">Users</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Users Cours</a>
@@ -45,7 +45,6 @@
                         @endguest
                     </ul>
                     <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
