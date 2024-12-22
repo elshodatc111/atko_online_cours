@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Techer;
 use App\Models\Cours;
+use App\Models\Contact;
+use App\Models\ContactMessaga;
 use Illuminate\Support\Str;
 
 class HomeController extends Controller{
@@ -84,6 +86,46 @@ class HomeController extends Controller{
         $course->cours_description = $validated['cours_description'];
         $course->save();
         return redirect()->back()->with('status', 'Kurs muvaffaqiyatli saqlandi!');
+    }
+    public function contact(){
+        $Contact = Contact::first();
+        if($Contact){
+            $status = 'false';
+        }else{
+            $status = 'true';
+        }
+        $ContactMessaga = ContactMessaga::get();
+        return view('admin.contact',compact('status','Contact','ContactMessaga'));
+    }
+    public function contact_create(Request $request){
+        $validatedData = $request->validate([
+            'phone' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'addres' => 'required|string|max:255',
+            'video' => 'required|url|max:255',
+        ]);
+        Contact::create([
+            'phone' => $validatedData['phone'],
+            'email' => $validatedData['email'],
+            'addres' => $validatedData['addres'],
+            'video' => $validatedData['video'],
+        ]);
+        return redirect()->back()->with('status', 'Contact muvaffaqiyatli saqlandi!');
+    }
+    public function contact_update(Request $request, $id){
+        $validatedData = $request->validate([
+            'phone' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'addres' => 'required|string|max:255',
+            'video' => 'required|url|max:255',
+        ]);
+        $Contact = Contact::first();
+        $Contact->phone = $request->phone;
+        $Contact->email = $request->email;
+        $Contact->addres = $request->addres;
+        $Contact->video = $request->video;
+        $Contact->save();
+        return redirect()->back()->with('status', 'Contact muvaffaqiyatli yangilandi!');
     }
 
 

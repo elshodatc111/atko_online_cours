@@ -13,6 +13,10 @@ Route::put('/admin/techer/update/{id}', [HomeController::class, 'techer_update']
 Route::get('/admin/cours', [HomeController::class, 'cours'])->name('admin_cours');
 Route::post('/admin/cours/story', [HomeController::class, 'cours_story'])->name('admin_cours_story');
 
+Route::get('/admin/contact', [HomeController::class, 'contact'])->name('admin_contact');
+Route::post('/admin/contact/create', [HomeController::class, 'contact_create'])->name('admin_contact_create');
+Route::put('/admin/contact/update/{id}', [HomeController::class, 'contact_update'])->name('admin_contact_update');
+
 
 
 /* Start End */
@@ -22,3 +26,5 @@ Route::get('/', [OnlineController::class, 'index'])->name('user_home');
 Route::get('/home', [OnlineController::class, 'index'])->name('user_home');
 Route::get('/techer', [OnlineController::class, 'techer'])->name('user_techer');
 Route::get('/cours', [OnlineController::class, 'cours'])->name('user_cours');
+Route::get('/contact', [OnlineController::class, 'contact'])->name('user_contact');
+Route::post('/contact_add', [OnlineController::class, 'message_add'])->name('user_contact_add');

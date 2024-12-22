@@ -37,7 +37,7 @@
                             <a class="nav-link" href="{{ route('admin_cours') }}">Cours</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Paymart</a>
+                            <a class="nav-link" href="{{ route('admin_contact') }}">Conatct</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Users</a>

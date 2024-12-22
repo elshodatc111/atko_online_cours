@@ -32,7 +32,7 @@
           <li><a href="{{ route('user_home') }}">Bosh sahifa<br></a></li>
           <li><a href="{{ route('user_cours') }}">Kurslar</a></li>
           <li><a href="{{ route('user_techer') }}">O'qituvchilar</a></li>
-          <li><a href="contact.html">Bog'lanish</a></li>
+          <li><a href="{{ route('user_contact') }}">Bog'lanish</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
