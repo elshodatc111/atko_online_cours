@@ -57,7 +57,7 @@ class PaymeController extends Controller{
                         ]
                     ];
                     return json_encode($response);
-                }else if($Order->price != $request->params['amount']){
+                }else if($Order->price*100 != $request->params['amount']){
                     $response = [
                         'id' => $request->id,
                         'error' => [
@@ -114,7 +114,7 @@ class PaymeController extends Controller{
                 $order_id = $account['order_id'];
                 $order = Order::where('id',$order_id)->first();
                 $transaction = Transaction::where('order_id',$order_id)->where('state', 1)->get();
-                if($order->price != $request->params['amount']){
+                if($order->price*100 != $request->params['amount']){
                     $response = [
                         'id' => $request->id,
                         'error' => [
