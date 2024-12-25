@@ -29,6 +29,9 @@ Route::post('/admin/contact/create', [HomeController::class, 'contact_create'])-
 Route::put('/admin/contact/update/{id}', [HomeController::class, 'contact_update'])->name('admin_contact_update');
 
 
+Route::get('/admin/usercours', [HomeController::class, 'usercours'])->name('admin_usercours');
+
+
 
 /* Start End */
 

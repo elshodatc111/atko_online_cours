@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Cours;
 use App\Models\Contact;
 use App\Models\CoursItem;
+use App\Models\UserCours;
 use App\Models\ContactMessaga;
 use Illuminate\Support\Str;
 
@@ -204,6 +205,12 @@ class HomeController extends Controller{
     public function users(){
         $Users = User::get();
         return view('admin.users',compact('Users'));
+    }
+    public function usercours(){
+        //$UserCours = UserCours::get();
+        $UserCours = UserCours::join('cours','cours.id','=','user_cours.cours_id')->join('users','users.id','=','user_cours.user_id')->get();
+        //dd($UserCours);
+        return view('admin.user_cours',compact('UserCours'));
     }
 
 

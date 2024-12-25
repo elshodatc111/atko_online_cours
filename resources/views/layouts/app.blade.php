@@ -40,7 +40,7 @@
                             <a class="nav-link" href="{{ route('admin_users') }}">Users</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Users Cours</a>
+                            <a class="nav-link" href="{{ route('admin_usercours') }}">Users Cours</a>
                         </li>
                         @endguest
                     </ul>
